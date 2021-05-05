@@ -9,10 +9,10 @@ li {
   list-style-type: none;
 }
 
-nav {
+/* nav {
   background-color: rgb(203, 162, 236);
   height: 50px;
-}
+} */
 
 ul:nth-child(even) {
   background-color: gray;
@@ -29,5 +29,13 @@ button {
 button:hover {
   color: grey;
   background-color: white;
-  //border: 1px solid grey;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  height: 70px;
+  background-color: hotpink;
 }

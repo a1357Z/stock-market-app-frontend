@@ -4,7 +4,8 @@ import Table from '../components/Table'
 const View = () => {
 
     const [data,setData] = useState([])
-    useEffect(() => {
+
+    let getDataFromDatabase = ()=>{
         const requestOptions = {
             method: 'GET',
         };
@@ -15,10 +16,36 @@ const View = () => {
             console.log(data.data);
             setData(data.data)
         });
+    }
+
+    useEffect(() => {
+        getDataFromDatabase()
     }, [])
+
+    let deleteData = (data) =>{
+        console.log(data);
+
+        const requestOptions = {
+            method : 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }
+        fetch('http://localhost:8000/delete',requestOptions)
+        .then(res=>{res.json()})
+        .then(data=>{
+            console.log(data);
+        })
+
+        getDataFromDatabase()
+    }
+
     return (
         <div>
-            {data.length === 0 ? null : <Table data = {data} button = "delete"/>}
+            {data.length === 0 ? null : <Table 
+            data = {data} 
+            button = "delete"
+            delete = {deleteData}
+            />}
         </div>
     )
 }

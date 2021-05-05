@@ -20,7 +20,7 @@ export default function App() {
       
       <div>
         <nav>
-          <ul>
+          <ul className="header">
             <li>
               <Link to="/home">Home</Link>
             </li>

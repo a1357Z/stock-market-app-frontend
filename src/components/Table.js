@@ -24,7 +24,7 @@ export default function Table(props){
                 data = {dataItem}
                 key = {index}
                 button = {props.button}
-                viewLink = {<Link to="/view">Views</Link>}
+                delete = {props.delete}
                 save = {async (event)=>{
                     console.log(event);
                     console.log(dataItem);
