@@ -15,7 +15,7 @@ const TableRow = (props) => {
                 <li>
                     {props.data.price}
                 </li>
-                <li>{props.data.volume}</li>
+                <li>{props.data.marketCap}</li>
                 <li><button onClick = {()=>{props.button ==='save'? props.save() : props.delete(props.data)}}>{props.button}</button></li>
             </ul>
         </div>

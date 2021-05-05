@@ -1,6 +1,4 @@
 ul {
-  /* display: flex;
-  justify-content: space-around; */
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
 }
@@ -8,11 +6,6 @@ ul {
 li {
   list-style-type: none;
 }
-
-/* nav {
-  background-color: rgb(203, 162, 236);
-  height: 50px;
-} */
 
 ul:nth-child(even) {
   background-color: gray;
@@ -37,5 +30,5 @@ button:hover {
   justify-items: center;
   align-items: center;
   height: 70px;
-  background-color: hotpink;
+  background-color: rgb(226, 226, 209);
 }

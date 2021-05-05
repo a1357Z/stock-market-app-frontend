@@ -25,10 +25,15 @@ export default function App() {
               <Link to="/home">Home</Link>
             </li>
             <li>
-              <Link to="/view">Views</Link>
+              <Link to="/view">Saved Items</Link>
             </li>
           </ul>
         </nav>
+        <div>
+          <div><img src="../public/AMZN.svg" alt="amazon"/></div>
+          <div><img src="../public/FB.png" alt="facebook"/></div>
+          <div><img src="../public/GOOGL.png" alt="google"/></div>
+        </div>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
