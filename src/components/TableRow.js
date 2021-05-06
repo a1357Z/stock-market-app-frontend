@@ -1,12 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+
 const TableRow = (props) => {
-    // const[button,setButton]=useState('Save')
-
-    // setButton(()=>props.viewLink)
-         
-    
-
     return (
         <div>
             <ul>

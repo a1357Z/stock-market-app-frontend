@@ -12,11 +12,17 @@ import { useState,useRef } from 'react'
 import Fuse from 'fuse.js'
 import Table from '../components/Table'
 import SearchBar from '../components/SearchBar'
+import Pagination from '../components/Pagination'
 
 export default function Home(){
     
      const [dataList, setData] = useState([])
-     const refContainer = useRef([]);
+     const [startIndex,setStartIndex] = useState(0)
+     const [endIndex,setEndIndex] = useState(4)
+     const database = useRef([]);
+     const maxIndex = useRef(null)
+     const minIndex = useRef(0)
+
      const fuse = new Fuse(dataList, {
         keys: ["name", "symbol"],
       });
@@ -26,6 +32,8 @@ export default function Home(){
         if(dataList.length !== 0){
             return
         }
+
+
         //list of words for which the query is to be performed
         let charsList=['amazon','microsoft','googl','facebook']
         let dataArray = []
@@ -77,12 +85,12 @@ export default function Home(){
         })
         setTimeout(()=>{
             console.log('dataArray is ',dataArray);
-            refContainer.current = dataArray
+            database.current = dataArray
+            maxIndex.current = dataArray.length - 1
             setData(prev=>{
                 return dataArray
             })       
-        },3000)
-        
+        },4000) 
     })
 
     let handleSearchChange=(event)=>{
@@ -93,24 +101,56 @@ export default function Home(){
             let arr = foundItems.map(item=>{
                 return item.item
             })
-
-
             setData(arr)
         }else{
-            setData(refContainer.current)
+            setData(database.current)
         }
+    }
+
+    let handleNextClick = ()=>{
+        if(startIndex + 5 <= maxIndex.current && endIndex + 5 <= maxIndex.current){
+            setStartIndex((i)=>i+5)
+            setEndIndex((i)=>i+5)
+        }else if(startIndex + 5 <= maxIndex.current){
+            setStartIndex((i)=>i+5)
+            setEndIndex(maxIndex.current)
+        }
+        console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
+    }
+
+    let handlePrevClick = () =>{
+        if(startIndex - 5 >= minIndex.current ){
+            setStartIndex((i)=>i-5)
+            setEndIndex((i)=>startIndex-1)   
+        }
+        console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
     }
 
     return(
         <div>
             
             <div>
-                {dataList.length===0 ? <h1 style={{"text-align":"center"}}>Loading...</h1> : null}
-                {dataList.length===0 ? null : <SearchBar onChange={handleSearchChange}/>}
-                {dataList.length===0 ? null : <Table 
-                data = {dataList}
-                button = 'save'
+                {dataList.length===0 ? <h1 style={{"textAlign":"center"}}>Loading...</h1> : null}
+
+                {dataList.length===0 ? null : 
+                <SearchBar 
+                    onChange={handleSearchChange}
                 />}
+
+                {dataList.length===0 ? null :
+                 <Table 
+                    data = {dataList}
+                    button = 'save'
+                    start = {startIndex}
+                    end = {endIndex}
+                />}
+
+                {dataList.length===0 ? null : 
+                 <Pagination
+                    next = {handleNextClick}
+                    previous = {handlePrevClick}
+                />}
+               
                 
             </div>
         </div>

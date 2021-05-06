@@ -45,6 +45,8 @@ const View = () => {
             data = {data} 
             button = "delete"
             delete = {deleteData}
+            start ={0}
+            end = {10000}
             />}
         </div>
     )
