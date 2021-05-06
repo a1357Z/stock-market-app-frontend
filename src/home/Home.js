@@ -70,14 +70,14 @@ export default function Home(){
                     fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${obj.symbol}&apikey=RL8262AMSHINMOF0`)
                     .then(res=>res.json())
                     .then(data=>{
-                        console.log('market cap is ',data);
+                        //console.log('market cap is ',data);
                         if(data.MarketCapitalization){
                             obj.marketCap = data.MarketCapitalization
                         }else{
                             obj.marketCap = 'N.A.'
                         }
                         dataArray.push(obj)
-                        console.log('obj is',obj);
+                        //console.log('obj is',obj);
                     })
                 })
               
@@ -94,7 +94,7 @@ export default function Home(){
     })
 
     let handleSearchChange=(event)=>{
-        console.log(event.target.value);
+        //console.log(event.target.value);
         let foundItems = fuse.search(event.target.value)
         console.log('founditems are',foundItems);
         if(foundItems.length !== 0){
@@ -115,7 +115,7 @@ export default function Home(){
             setStartIndex((i)=>i+5)
             setEndIndex(maxIndex.current)
         }
-        console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
+        //console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
     }
 
     let handlePrevClick = () =>{
@@ -123,7 +123,7 @@ export default function Home(){
             setStartIndex((i)=>i-5)
             setEndIndex((i)=>startIndex-1)   
         }
-        console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
+        //console.log(`start index is ${startIndex}, endIndex is ${endIndex}`);
     }
 
     return(

@@ -35,8 +35,6 @@ export default function App() {
           <div><img src="../public/GOOGL.png" alt="google"/></div>
         </div>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
     
           <Route path="/view">
