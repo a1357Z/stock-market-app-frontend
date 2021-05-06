@@ -30,9 +30,7 @@ export default function App() {
           </ul>
         </nav>
         <div>
-          <div><img src="../public/AMZN.svg" alt="amazon"/></div>
-          <div><img src="../public/FB.png" alt="facebook"/></div>
-          <div><img src="../public/GOOGL.png" alt="google"/></div>
+
         </div>
 
         <Switch>
